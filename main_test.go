@@ -64,7 +64,21 @@ func TestInitial(t *testing.T) {
 		run(t, "diff", "-r", filepath.Join(tmp, "initial"), "testdata/expected")
 	}
 }
+func TestItcVersion(t *testing.T) {
+	if os.Getenv("RUNME") != "" {
+		tmp := tempDir(t)
+		t.Logf("tmp dir: %s", tmp)
+		samplefile := filepath.Join(tmp, "file.c")
+		const sampleLicensed = "testdata/itc_file.c"
 
+		run(t, "cp", "testdata/initial/file.c", samplefile)
+		os.Args = append(os.Args, samplefile)
+		main()
+		run(t, "diff", samplefile, sampleLicensed)
+		return
+	}
+
+}
 func TestMultiyear(t *testing.T) {
 	if os.Getenv("RUNME") != "" {
 		main()

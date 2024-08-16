@@ -54,12 +54,18 @@ var (
 	ignorePatterns     stringSlice
 	spdx               spdxFlag
 
-	holder    = flag.String("c", "Google LLC", "copyright holder")
-	license   = flag.String("l", "apache", "license type: apache, bsd, mit, mpl")
-	licensef  = flag.String("f", "", "license file")
-	year      = flag.String("y", fmt.Sprint(time.Now().Year()), "copyright year(s)")
-	verbose   = flag.Bool("v", false, "verbose mode: print the name of the files that are modified or were skipped")
-	checkonly = flag.Bool("check", false, "check only mode: verify presence of license headers and exit with non-zero code if missing")
+	holder       = flag.String("c", "ITC Soluciones", "copyright holder")
+	license      = flag.String("l", "ITC", "license type: apache, ITC , bsd, mit, mpl")
+	packeVersion = flag.String("pgv", "0001", "Packeage version type: 0001,0002, 0003")
+	gap          = flag.String("gap", "0001", "Gap version type: 0001,0002, 0003")
+	solitud      = flag.String("sctd", "0000001", "Solicitud version type: 0001,0002, 0003")
+	date         = flag.String("date", "01/02/2024", "Date version type: 01/02/2024,03/02/2024, 04/02/2024")
+	own          = flag.String("own", "theoverlord", "theoverlord : 0001,0002, 0003")
+	desc         = flag.String("desc", "Entrega Version inicial", "Entrega Version inicial: Kot,0002, 0003")
+	licensef     = flag.String("f", "", "license file")
+	year         = flag.String("y", fmt.Sprint(time.Now().Year()), "copyright year(s)")
+	verbose      = flag.Bool("v", false, "verbose mode: print the name of the files that are modified or were skipped")
+	checkonly    = flag.Bool("check", false, "check only mode: verify presence of license headers and exit with non-zero code if missing")
 )
 
 func init() {
@@ -133,6 +139,12 @@ func main() {
 	data := licenseData{
 		Year:   *year,
 		Holder: *holder,
+		Ver:    *packeVersion,
+		Gap:    *gap,
+		Sol:    *solitud,
+		Date:   *date,
+		Own:    *own,
+		Des:    *desc,
 		SPDXID: *license,
 	}
 

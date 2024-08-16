@@ -139,7 +139,7 @@ func TestFetchTemplate(t *testing.T) {
 	}
 }
 
-func TestExecuteTemplate(t *testing.T) {
+func TestExecuteTemplateItc(t *testing.T) {
 	tests := []struct {
 		name          string
 		template      string
